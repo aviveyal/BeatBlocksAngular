@@ -46,8 +46,9 @@ export class AddSongComponent implements OnInit {
   addSong(event){
 
     const newSid = this.songsRef.push(
-      {artistName:this.artistName ,
+      {artistId:this.artistName ,
         name:this.name,
+        album:this.album,
         length:this.length,
         songImage: "",
         lastUpdate:new Date().getTime(),
