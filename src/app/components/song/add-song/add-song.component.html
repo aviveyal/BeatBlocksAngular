@@ -1,0 +1,25 @@
+<br><br>
+<!--generate last update , listens ,sid-->
+<br>
+<div>
+  <form class="songForm" method="post" (keyup.enter)="addSong()">
+    <div class="form-group">
+      <input type="text" [(ngModel)]="name" name="name" class="form-control" placeholder="song name" >
+      <input type="text" [(ngModel)]="length" name="length" class="form-control" placeholder="length (format - mm:mm / m:mm)" >
+      <input type="text" [(ngModel)]="artistName" name="Artist Name" class="form-control" placeholder="album" >
+      <input type="text" [(ngModel)]="album" name="album" class="form-control" placeholder="album" >
+      <!--<input type="text" [(ngModel)]="songImage" name="songImage" class="form-control" placeholder="song Image" >-->
+      Choose Song image : <input type="file" (change)="fileChangePhoto($event)" id="file" accept=".jpg" /><br>
+      Choose Audio file :<input type="file" (change)="fileChangeAudio($event)" id="mp3" accept=".mp3" />
+    </div>
+    <div align="center">
+    <agm-map  [latitude] = "lat" [longitude]="lon" [zoom]="14" (mapClick)="placeMarker($event)">
+      <agm-marker *ngIf="originLat && originLon && count==1" [latitude] = "originLat" [longitude]="originLon" ></agm-marker>
+      <agm-direction *ngIf="count==2" [origin]="dir.origin" [destination]="dir.destination" [travelMode]="dir.travelMode" [visible]="show"></agm-direction>
+    </agm-map>
+    </div>
+    <button (click)="addSong()" type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+<br>
+
