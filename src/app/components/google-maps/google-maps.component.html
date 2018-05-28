@@ -1,0 +1,6 @@
+<div align="center" (mouseenter) = getDirection()>
+  <agm-map  [latitude] = "lat" [longitude]="lon" [zoom]="zoom">
+    <agm-direction *ngIf="dir" [origin]="dir.origin" [destination]="dir.destination" [travelMode]="dir.travelMode" [visible]="show"></agm-direction>
+  </agm-map>
+  <br><br>
+</div>

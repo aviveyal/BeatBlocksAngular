@@ -1,0 +1,50 @@
+<!------ Include the above in your HEAD tag ---------->
+
+<!-- Team -->
+<section id="team" class="pb-5">
+  <div class="container">
+    <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+      <div class="mainflip">
+        <div class="frontside">
+          <div class="card">
+
+            <div class="card-body text-center">
+              <p><img class=" img-fluid" src="{{song.songImage}}" alt="card image" ></p>
+              <h4 class="card-title"><h2>{{song.name}}</h2></h4>
+              <p class="card-text">{{song.album}}<br>{{song.length}}<br>{{song.artistId}}</p>
+            </div>
+
+          </div>
+
+        </div>
+        <div class="backside">
+          <div class="card">
+            <div class="card-body text-center mt-4">
+              <h4 class="card-title">Location</h4>
+              <div *ngIf="locationsCordinate">
+                <!--<p class="card-text">{{lat}},{{lon}}</p>-->
+                <app-google-maps [location]="locationsCordinate">
+
+                </app-google-maps>
+              </div>
+              <ul class="list-inline">
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--<div *ngIf="artistID==song.artistID">-->
+    <!--<div class="container" align = "center">-->
+
+      <!--<button (click)="submit()" type="button" class="btn btn-success">Edit</button>-->
+      <!--<button (click)="deleteSong(song._id)" type="button" class="btn btn-danger">Delete</button>-->
+
+    <!--</div>-->
+  <!--</div>-->
+
+  <!-- ./Team member -->
+
+</section>
+<!-- Team -->

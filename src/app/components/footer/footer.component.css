@@ -1,0 +1,50 @@
+footer{
+  color: white;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  border-top: 8px solid darkgray;
+  background-color: #b46ec9;
+  background: linear-gradient(20deg, #000000, #7a8091, #5a1580); /*Change colors as you want*/
+  background-size: 1000% 1000% !important;
+  -webkit-animation: changeColors 30s ease infinite;
+  -moz-animation: changeColors 30s ease infinite;
+  -o-animation: changeColors 30s ease infinite;
+  animation: changeColors 30s ease infinite;
+}
+
+@-webkit-keyframes changeColors {
+  0% {
+    background-position: 0 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
+}
+
+/*//////////////////////////*/
+.main-container {
+  min-height: 65vh; /* will cover the 100% of viewport */
+  overflow: hidden;
+  display: block;
+  position: relative;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+h1 {
+  text-shadow: #b46ec9 2px 2px;
+  font-size: 50px;
+  transition: font-size 2s;
+}
+
+h1:hover {
+  font-size: 100px;
+}
