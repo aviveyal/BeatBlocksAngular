@@ -1,8 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { SongComponent } from './components/song/song.component';
+
 import {environment} from "../environments/environment";
 //angularfire2
 import {AngularFireModule } from "angularfire2";
@@ -15,9 +17,12 @@ import {RouterModule, Routes} from "@angular/router";
 import { GoogleMapsComponent } from './components/google-maps/google-maps.component';
 import { AgmCoreModule } from '@agm/core';
 import { AgmDirectionModule } from 'agm-direction';
+import { AddSongComponent } from './components/song/add-song/add-song.component';
+import {AngularFireStorageModule} from "angularfire2/storage";
 
 const appRoutes: Routes =[
   {path:'songs', component: SongComponent},
+  {path:'addsong', component: AddSongComponent},
  // {path:'facebook', component: FacebookComponent }
 ];
 
@@ -28,7 +33,8 @@ const appRoutes: Routes =[
     SongItemComponent,
     FooterComponent,
     NavbarComponent,
-    GoogleMapsComponent
+    GoogleMapsComponent,
+    AddSongComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +43,9 @@ const appRoutes: Routes =[
     AngularFireAuthModule,
     RouterModule.forRoot(appRoutes),
     AgmCoreModule.forRoot({apiKey: 'AIzaSyB3YN-E65c4Zc2ZAQcj1HOKSHmpcq7Jq1Q'}),
-    AgmDirectionModule
+    AgmDirectionModule,
+    FormsModule,
+    AngularFireStorageModule
   ],
   providers: [],
   bootstrap: [AppComponent]
