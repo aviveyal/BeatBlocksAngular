@@ -21,7 +21,7 @@ import { AddSongComponent } from './components/song/add-song/add-song.component'
 import {AngularFireStorageModule} from "angularfire2/storage";
 
 const appRoutes: Routes =[
-  {path:'songs', component: SongComponent},
+  {path:'', component: SongComponent},
   {path:'addsong', component: AddSongComponent},
  // {path:'facebook', component: FacebookComponent }
 ];

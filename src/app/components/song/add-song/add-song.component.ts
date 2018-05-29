@@ -43,7 +43,7 @@ export class AddSongComponent implements OnInit {
 
   }
 
-  addSong(event){
+  addSong(){
 
     const newSid = this.songsRef.push(
       {artistId:this.artistName ,
