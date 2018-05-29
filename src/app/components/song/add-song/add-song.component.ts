@@ -56,6 +56,8 @@ export class AddSongComponent implements OnInit {
       }
       ).key
 
+      this.songsRef.update(newSid, {sid : newSid})
+
       this.FBstorgae.upload('/SongImages/'+newSid+".jpg",this.photo ).then(
         snapshot =>
         {

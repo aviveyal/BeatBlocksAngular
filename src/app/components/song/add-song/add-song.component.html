@@ -4,10 +4,10 @@
 <div>
   <form class="songForm" method="post" (keyup.enter)="addSong()">
     <div class="form-group">
-      <input type="text" [(ngModel)]="name" name="name" class="form-control" placeholder="song name" >
-      <input type="text" [(ngModel)]="length" name="length" class="form-control" placeholder="length (format - mm:mm / m:mm)" >
-      <input type="text" [(ngModel)]="artistName" name="Artist Name" class="form-control" placeholder="album" >
-      <input type="text" [(ngModel)]="album" name="album" class="form-control" placeholder="album" >
+      <input type="text" [(ngModel)]="name" name="name" class="form-control" placeholder="Song name" >
+      <input type="text" [(ngModel)]="length" name="length" class="form-control" placeholder="Length (format - mm:mm / m:mm)" >
+      <input type="text" [(ngModel)]="artistName" name="Artist Name" class="form-control" placeholder="Artist name" >
+      <input type="text" [(ngModel)]="album" name="album" class="form-control" placeholder="Album" >
       <!--<input type="text" [(ngModel)]="songImage" name="songImage" class="form-control" placeholder="song Image" >-->
       Choose Song image : <input type="file" (change)="fileChangePhoto($event)" id="file" accept=".jpg" /><br>
       Choose Audio file :<input type="file" (change)="fileChangeAudio($event)" id="mp3" accept=".mp3" />

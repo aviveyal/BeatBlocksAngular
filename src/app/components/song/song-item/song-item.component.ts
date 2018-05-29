@@ -31,7 +31,7 @@ export class SongItemComponent implements OnInit {
     this.location = this.db.object('locations/' + this.song.sid).valueChanges();
     this.location.subscribe(data =>{
       this.locationsCordinate = data;
-
+      console.log(this.song.sid , this.locationsCordinate )
 
     });
 
