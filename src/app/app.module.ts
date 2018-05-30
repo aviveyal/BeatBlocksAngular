@@ -1,10 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FlashMessagesModule } from 'angular2-flash-messages';
 import { AppComponent } from './app.component';
 import { SongComponent } from './components/song/song.component';
-
+import { ValidationsService } from "./services/validations.service";
 import {environment} from "../environments/environment";
 //angularfire2
 import {AngularFireModule } from "angularfire2";
@@ -42,12 +42,17 @@ const appRoutes: Routes =[
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     RouterModule.forRoot(appRoutes),
-    AgmCoreModule.forRoot({apiKey: 'AIzaSyB3YN-E65c4Zc2ZAQcj1HOKSHmpcq7Jq1Q'}),
+    AgmCoreModule.forRoot(
+      {apiKey: 'AIzaSyB3YN-E65c4Zc2ZAQcj1HOKSHmpcq7Jq1Q',
+      libraries: ['geometry', 'places']}),
     AgmDirectionModule,
     FormsModule,
-    AngularFireStorageModule
+    ReactiveFormsModule,
+    AngularFireStorageModule,
+    FlashMessagesModule.forRoot()
+
   ],
-  providers: [],
+  providers: [ValidationsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
