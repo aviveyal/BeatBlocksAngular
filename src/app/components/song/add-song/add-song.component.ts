@@ -111,13 +111,14 @@ export class AddSongComponent implements OnInit {
 
     if (this.length != undefined) {
       if (!this.validationsService.validateTime(this.length)) {
-      this.flashMessage.show('Please use a valid length', {cssClass: 'alert-danger', timeout: 3000});
-      this.validataion = 1;
-      window.scrollTo(0, 0)
-    }
+        this.flashMessage.show('Please use a valid length', {cssClass: 'alert-danger', timeout: 3000});
+        this.validataion = 1;
+        window.scrollTo(0, 0)
+      }
     }
 
-    if(this.validataion==0) {
+    if (this.validataion == 0) {
+
 
       const newSid = this.songsRef.push(
         {
@@ -127,44 +128,49 @@ export class AddSongComponent implements OnInit {
           length: this.length,
           songImage: "",
           lastUpdate: new Date().getTime(),
-          listens: (Math.floor(Math.random() * (1000 - 1 + 1)) + 1) + ""
+          listens: (Math.floor(Math.random() * (1000 - 1 + 1)) + 1) + "",
+          sid:""
         }
       ).key
 
-      this.songsRef.update(newSid, {sid: newSid})
+      setTimeout(() => {
 
-      this.FBstorgae.upload('/SongImages/' + newSid + ".jpg", this.photo).then(
-        snapshot => {
-          const ref = this.FBstorgae.ref('/SongImages/' + newSid + ".jpg");
-          const downloadURL = ref.getDownloadURL();
+          this.songsRef.update(newSid, {sid: newSid});
+          this.FBstorgae.upload('/SongImages/' + newSid + ".jpg", this.photo).then(
+            snapshot => {
+              const ref = this.FBstorgae.ref('/SongImages/' + newSid + ".jpg");
+              const downloadURL = ref.getDownloadURL();
 
-          downloadURL.subscribe(url => {
-            if (url) {
-              this.ImageUrl = url;
-              console.log(this.ImageUrl);
-              this.songsRef.update(newSid, {songImage: this.ImageUrl});
+              downloadURL.subscribe(url => {
+                if (url) {
+                  this.ImageUrl = url;
+                  console.log(this.ImageUrl);
+                  this.songsRef.update(newSid, {songImage: this.ImageUrl});
+                }
+              });
+
             }
-          });
+          );
+          this.FBstorgae.upload('/' + newSid + ".mp3", this.mp3);
 
-        }
-      );
-      this.FBstorgae.upload('/' + newSid + ".mp3", this.mp3);
+          const location = this.locationRef.update(newSid,
+            {
+              startLatitude: this.originLat + "",
+              startLongitude: this.originLon + "",
+              endLatitude: this.destLat + "",
+              endLongitude: this.destLon + "",
+              lastUpdate: new Date().getTime(),
+              sid: newSid
+            }
+          );
 
-      const location = this.locationRef.update(newSid,
-        {
-          startLatitude: this.originLat + "",
-          startLongitude: this.originLon + "",
-          endLatitude: this.destLat + "",
-          endLongitude: this.destLon + "",
-          lastUpdate: new Date().getTime(),
-          sid: newSid
-        }
-      )
+        },
+        5000);
+      this.flashMessage.show('You added new song successfully!', {cssClass: 'alert-success', timeout: 3000});
+      this.router.navigate(['/']);
+
     }
-    this.flashMessage.show('You added new song successfully!', {cssClass: 'alert-success', timeout: 3000});
-    this.router.navigate(['/']);
   }
-
   fileChangePhoto(event) {
      this.photo= event.target.files[0];
   }
